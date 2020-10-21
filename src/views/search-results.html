@@ -15,59 +15,52 @@
     {% include "partials/page-header.html" %}
 
     <main>
-        <h4>
-            <strong>3 pontos</strong>
-            encontrados
-        </h4>
 
-        <div class="cards">
+        {% if total > 0 %}
 
-            <div class="card">
-                <img src="/assets/receletronicos.jpg" alt="Colectoria">
-                <h1>Coletora</h1>
+            <h4>
+                <strong>{{ total }}
+                    pontos</strong>
+                encontrados
+            </h4>
 
-                <h3>Residuos Eletronicos, Lampadas</h3>
+            <div class="cards">
 
-                <p>
-                    CooperTech Residuos Eletronicos
-                    <br/>
+                {% for place in places %}
 
-                    Rua: Miracena, 274 - Chácaras Reunidas, São José dos Campos - SP, Brazil
-                </p>
+                    <div class="card">
+                        <img src="{{ place.image }}" alt="{{ place.name }}">
+                        <h1>{{ place.name }}</h1>
 
-            </div>
+                        <h3>{{ place.items }}</h3>
 
-            <div class="card">
-                <img src="/assets/papelao.jpg" alt="Colectoria">
-                <h1>Papersider</h1>
+                        <p>
+                            {{ place.city }},
+                            {{ place.state }}
+                            <br/>
 
-                <h3>Papeis e Papelao</h3>
+                            {{ place.address }}
 
-                <p>
-                    Cooperativa Futura de São José dos Campos
-                    <br/>
+                            <br/>
 
-                    Rua: Miracena, 274 - Chácaras Reunidas, São José dos Campos - SP, Brazil
-                </p>
+                            {{ place.address2 }}
 
-            </div>
+                        </p>
 
-            <div class="card">
-                <img src="/assets/lixoorganico.jpg" alt="Colectoria">
-                <h1>Lixo Organico</h1>
+                    </div>
 
-                <h3>Origem biológica</h3>
-
-                <p>
-                    Urbanizadora Municipal Sa URBAM
-                    <br/>
-
-                    R. Guidoval, 100 - Conj. Res. Trinta e Um de Marco, São José dos Campos - SP, 12237-130, Brazil
-                </p>
+                {% endfor %}
 
             </div>
 
-        </div>
+            {%else%}
+
+            <h4>
+                <strong>Nenhum</strong>
+                local encontrado</h4>
+
+        {% endif %}
+
     </main>
 
 {% endblock content %}

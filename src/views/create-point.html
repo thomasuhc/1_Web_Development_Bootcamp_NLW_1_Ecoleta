@@ -2,6 +2,7 @@
 
 {% block styles %}
     <link rel="stylesheet" href="styles/create-point.css">
+    <link rel="stylesheet" href="styles/modal.css">
 {% endblock styles %}
 
 {% block title %}
@@ -14,7 +15,7 @@
 
     {% include "partials/page-header.html" %}
 
-    <form action="">
+    <form action="/savepoint" method="POST">
         <h1>Cadastro de ponto de coleta</h1>
 
         <fieldset>
@@ -29,7 +30,7 @@
                 </div>
                 <div class="field">
                     <label for="">Imagem da entidade</label>
-                    <input type="url" name="imagem" required="required" placeholder="http://">
+                    <input type="url" name="image" required="required" placeholder="http://">
                 </div>
 
             </div>
@@ -42,7 +43,7 @@
 
                 <div class="field">
                     <label for="adress2">Numero/Complemento</label>
-                    <input type="number" name="address2" required="required">
+                    <input type="text" name="address2" required="required">
                 </div>
             </div>
 
@@ -74,32 +75,32 @@
             </legend>
 
             <div class="itens-grid">
-                <li data-id="1">
+                <li data-id="Lampadas">
                     <img src="/assets/lampadas.svg" alt="Lampadas">
                     <span>Lampadas</span>
                 </li>
 
-                <li data-id="2">
+                <li data-id="Pilhas e Baterias">
                     <img src="/assets/baterias.svg" alt="Pilhas e Baterias">
                     <span>Pilhas e Baterias</span>
                 </li>
 
-                <li data-id="3">
+                <li data-id="Papeis e Papelao">
                     <img src="/assets/papeis-papelao.svg" alt="Papeis e Papelao">
                     <span>Papeis e Papelao</span>
                 </li>
 
-                <li data-id="4">
+                <li data-id="Residuos Eletronicos">
                     <img src="/assets/eletronicos.svg" alt="Residuos Eletronicos">
                     <span>Residuos Eletronicos</span>
                 </li>
 
-                <li data-id="5">
+                <li data-id="Residuos Organicos">
                     <img src="/assets/organicos.svg" alt="Residuos Organicos">
                     <span>Residuos Organicos</span>
                 </li>
 
-                <li data-id="6">
+                <li data-id="Oleo de Cozinha">
                     <img src="/assets/oleo.svg" alt="Oleo de Cozinha">
                     <span>Oleo de Cozinha</span>
                 </li>
@@ -115,6 +116,12 @@
     </form>
 
 {% endblock content %}
+
+{% block modal %}
+    {% if saved %}
+        {% include "partials/point-created.html" %}}
+    {% endif %}
+{% endblock modal %}
 
 {% block scripts %}
     <script src="/scripts/create-point.js"></script>
